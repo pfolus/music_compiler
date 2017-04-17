@@ -27,7 +27,7 @@ for line in music1:
     #year - line[1][0]
     #genre - line[1][1]
     #length - line[1][2]
-print(music)
+print(music) # developers option
 repeatmain = 1
 while repeatmain == 1:
     option = input("""\nWelcome in the CoolMusic! Choose the action:
@@ -79,9 +79,24 @@ while repeatmain == 1:
         randomline = random.choice(genrealbums)
         print(str(randomline[0][1]), '-', str(randomline[1][1]))
     elif option == '9':
-        pass
+        artist = input('Enter artist/band name: ')
+        i = 0
+        for line in music:
+            if artist.lower() == line[0][0].lower():
+                i += 1
+        if i > 0:
+            print('Numer of artists albums in database: ' + str(i))
+        else:
+            print('There is no such artist in our database')
     elif option == '10':
-        pass
+        longest = 0
+        for line in music:
+            length = line[1][2].rstrip()
+            length = int(length.replace(':',''))
+            if length > longest:
+                longest = length
+                longestalbum = line[0][1]
+        print('Longest album in our database is: ' + str(longestalbum))
     elif option == '0':
         repeatmain = 0
     else:
